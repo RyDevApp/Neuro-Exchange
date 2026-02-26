@@ -8,7 +8,15 @@ const rootElement = document.getElementById('root');
 if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
-
+const CryptoChart = () => (
+  <iframe
+    src="https://remix-comprehensive-crypto-chart-1022747036082.us-west1.run.app/"
+    width="100%"
+    height="500"
+    style={{ border: 'none', borderRadius: '8px' }}
+    title="Live Crypto Chart"
+  />
+);
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
