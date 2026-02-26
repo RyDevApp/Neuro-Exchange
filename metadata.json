@@ -1,0 +1,5 @@
+{
+  "name": "Remix: Comprehensive Crypto Chart",
+  "description": "A comprehensive crypto chart that fetches the latest prices for a wide range of cryptocurrencies, including Bitcoin, Ethereum, Solana, and more. It provides a real-time conversion tool and features a unique, neuro-like blockchain aesthetic.",
+  "requestFramePermissions": []
+}

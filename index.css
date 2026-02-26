@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-green: #00ff41;
+  --color-blood-orange: #ff3b00;
+  --color-cyber-blue: #0a192f;
+  --color-cyber-blue-light: #112240;
+  --color-cyber-blue-lighter: #233554;
+  --color-cyber-accent: #64ffda;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+@keyframes shock {
+  0%, 100% {
+    transform: translateX(0) translateY(0) skewX(0);
+    filter: hue-rotate(0deg) contrast(100%);
+    opacity: 1;
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-4px) translateY(4px) skewX(-5deg);
+    filter: hue-rotate(90deg) contrast(150%) brightness(1.2);
+    box-shadow: 0 0 20px var(--color-neon-green);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(4px) translateY(-4px) skewX(5deg);
+    filter: hue-rotate(-90deg) contrast(150%) brightness(1.2);
+    box-shadow: 0 0 20px var(--color-blood-orange);
+  }
+}
+
+.animate-shock {
+  animation: shock 0.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: inset(10% 0 80% 0);
+    transform: translate(-2px, 2px);
+  }
+  20% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(2px, -2px);
+  }
+  40% {
+    clip-path: inset(40% 0 40% 0);
+    transform: translate(2px, 2px);
+  }
+  60% {
+    clip-path: inset(20% 0 60% 0);
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    clip-path: inset(60% 0 20% 0);
+    transform: translate(2px, -2px);
+  }
+  100% {
+    clip-path: inset(10% 0 80% 0);
+    transform: translate(-2px, 2px);
+  }
+}
+
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--color-blood-orange);
+  clip-path: inset(20% 0 80% 0);
+  animation: glitch 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--color-neon-green);
+  clip-path: inset(80% 0 20% 0);
+  animation: glitch 3s infinite linear alternate-reverse;
+}
+
+body {
+  background-color: var(--color-cyber-blue);
+  color: var(--color-cyber-accent);
+  font-family: var(--font-mono);
+}
+
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(100, 255, 218, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
+}
+
+.cyber-panel {
+  background: rgba(17, 34, 64, 0.8);
+  border: 1px solid var(--color-cyber-accent);
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.1), inset 0 0 20px rgba(100, 255, 218, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.cyber-button {
+  background: transparent;
+  border: 1px solid var(--color-cyber-accent);
+  color: var(--color-cyber-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cyber-button:hover {
+  background: rgba(100, 255, 218, 0.1);
+  box-shadow: 0 0 10px rgba(100, 255, 218, 0.4);
+  text-shadow: 0 0 5px var(--color-cyber-accent);
+}
+
+.cyber-button.active {
+  background: var(--color-neon-green);
+  color: var(--color-cyber-blue);
+  border-color: var(--color-neon-green);
+  box-shadow: 0 0 15px var(--color-neon-green);
+}
+
+.cyber-input {
+  background: rgba(10, 25, 47, 0.8);
+  border: 1px solid var(--color-cyber-blue-lighter);
+  color: var(--color-neon-green);
+  font-family: var(--font-mono);
+  transition: all 0.3s ease;
+}
+
+.cyber-input:focus {
+  border-color: var(--color-neon-green);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+  outline: none;
+}
